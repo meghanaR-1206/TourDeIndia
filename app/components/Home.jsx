@@ -99,7 +99,7 @@ const Home = () => {
               </h1>
         <div className='flex flex-col justify-center items-center'>
           {filejson.states?.map((item, index) => (
-            <Link href="/States" onClick={() => setLoading(e => !e)} >
+            <Link href="/States" key={index} onClick={() => setLoading(e => !e)} >
               <div id={`scale${index}`} onClick={() => dispatch(setCount(index))} key={index} className={index % 2 ? 'bg-[#351a03] px-2 py-2  rounded-md w-[80vw]   flex justify-around items-center gap-4  m-6 h-fit animates' : 'bg-[#351a03] rounded-md w-[80vw] scalediv m-6 h-fit flex gap-6  justify-around items-center p-2 '}>
                 <Image loading='lazy' src={item.PortraitImg} alt={`${item.state} portrait`} width={200} height={300} className=' h-[10rem]' />
                 <div className='flex justify-around text-2xl h-full gap-3 text-center flex-col'>

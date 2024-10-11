@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@botpress/webchat": "^2.2.13",
+    "@botpress/webchat": "^2.2.15",
     "@botpress/webchat-generator": "^0.2.15",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",

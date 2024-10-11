@@ -26,9 +26,6 @@ export default function RootLayout({ children }) {
       <body className="font-inter scrolling" style={{ top: 0 }}>
         {children}
         <Bot/>
-
-        <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-        <script src="https://files.bpcontent.cloud/2024/10/06/03/20241006033257-4O1MZBDD.js"></script>
       </body>
     </html >
   );

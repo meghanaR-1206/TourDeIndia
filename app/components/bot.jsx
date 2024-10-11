@@ -1,7 +1,7 @@
 "use client"
 import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
 import { buildTheme } from "@botpress/webchat-generator";
-import { Container, Header, MessageList, Composer, ComposerInput, ComposerButton, UploadButton } from '@botpress/webchat'
+import { Container, Header, MessageList, Composer, ComposerInput, ComposerButton } from '@botpress/webchat'
 import { useState } from "react";
 // import Logo from "../../public/images/LOGO.svg"
 // Customize text color and background color

@@ -35,12 +35,14 @@ const States = () => {
   const { contextSafe } = useGSAP();
 
   const animation = contextSafe((load) => {
+    if(document)
     document.querySelectorAll('.leftright').forEach(element => {
       element.style.opacity = 1;
     });
     
     for (let index = 0; index < 5; index++) {
-      const cultureSection = document.getElementById(`culture${index}`);
+    if(document)
+      var cultureSection = document.getElementById(`culture${index}`);
       if (index % 2 == 1) {
         ScrollTrigger.create({
           trigger: cultureSection,
@@ -51,12 +53,16 @@ const States = () => {
               cultureSection.style.opacity = 1;
      
             cultureSection.addEventListener('mouseleave', () => {
+    if(document)
+{
               document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1)';
+              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1)';}
             });
             cultureSection.addEventListener('mouseenter', () => {
+    if(document)
+{
               document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1.3)';
+              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1.3)';}
             });
           }
             gsap.from(cultureSection, {
@@ -78,12 +84,16 @@ const States = () => {
               cultureSection.style.opacity = 1;
      
             cultureSection.addEventListener('mouseleave', () => {
+    if(document)
+{
               document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1)';
+              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1)';}
             });
             cultureSection.addEventListener('mouseenter', () => {
-              document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1.3)';
+    if(document)
+
+           {   document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
+              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1.3)';}
             });
           }
             gsap.from(cultureSection, {
@@ -117,6 +127,7 @@ const States = () => {
         });
       }
     }
+    if(window)
     window.scrollTo(0, 0);
   });
 

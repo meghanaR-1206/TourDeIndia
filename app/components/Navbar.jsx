@@ -44,12 +44,13 @@ export default function Navbar() {
       { pageLanguage: 'en' },
       'google_translate_element'
       );
-      if (window.screen.width < 768) {
+      if (window.screen.width < 768 && document) {
       document.querySelector('nav').style.transform = 'translateY(-100%)';
       }
 
       const handleScroll = () => {
-      const nav = document.querySelector('nav');
+        if(document){
+      var nav = document.querySelector('nav');}
       if (window.scrollY > window.innerHeight / 0.5) {
         nav.style.transition = 'transform 0.6s ease-in-out';
         nav.style.transform = 'translateY(-30vh)';
@@ -58,34 +59,42 @@ export default function Navbar() {
         nav.style.transform = 'translateY(0)';
       }
       };
+      if(document)
       document.querySelectorAll('.scrl').forEach(element => {
         element.addEventListener('click', () => {
+          if(window){
           window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'
-          });
+          });}
         });
       });
+      if(window)
       window.addEventListener('scroll', handleScroll);
 
       return () => {
+        if(window)
       window.removeEventListener('scroll', handleScroll);
       };
     };
 
     animation();
 
+    if(document)
     document.querySelectorAll('li').forEach(element => {
       element.style.opacity = 1;
     });
 
     const addGoogleTranslateScript = () => {
-      const script = document.createElement('script');
+      if(document)
+      var script = document.createElement('script');
       script.type = 'text/javascript';
       script.src =
         'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       script.async = true;
+      if(document)
       document.body.appendChild(script);
+      if(window)
       window.googleTranslateElementInit = googleTranslateElementInit;
     };
 

@@ -77,6 +77,7 @@ const Home = () => {
   });
   
   useEffect(() => {
+    
     if (!fetchData) {
       animation();
     }

@@ -205,6 +205,34 @@ position: relative;
     text-wrap: balance;
   }
 }
+.bpMessageBlocksButton {
+  color: white;
+}
+.bpMessageListMarqueeAvatarFallback {
+  background-color: #f36e0a;
+}
+
+.bpHeaderContentAvatarFallback {
+  background-color: #f36e0a;
+}
+.bpMessageAvatarFallback {
+  background-color: #f36e0a;
+}
+.bpContainer {
+  position: fixed;
+    bottom: 6rem;
+    right: 0rem;
+    width: 29rem;
+    height: 35rem;
+}
+.bpHeaderContainer {
+  background-color: #642e00;
+}
+.bpFabContainer {
+  position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
 .css-rh82gz-DropDown{
   width: 160px !important;
 }

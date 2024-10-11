@@ -35,106 +35,81 @@ const States = () => {
   const { contextSafe } = useGSAP();
 
   const animation = contextSafe((load) => {
-    if(document)
-    document.querySelectorAll('.leftright').forEach(element => {
-      element.style.opacity = 1;
-    });
-    
-    for (let index = 0; index < 5; index++) {
-    if(document)
-      var cultureSection = document.getElementById(`culture${index}`);
-      if (index % 2 == 1) {
+    if (typeof document !== "undefined") {
+      // Set opacity of all elements with the class 'leftright'
+      document.querySelectorAll('.leftright').forEach(element => {
+        element.style.opacity = 1;
+      });
+  
+      // Function to handle ScrollTrigger and hover events for each culture section
+      const applyScrollTrigger = (index, cultureSection, cultureImg) => {
+        if (!cultureSection || !cultureImg) return;
+  
         ScrollTrigger.create({
           trigger: cultureSection,
           start: 'top center',
           once: true,
           onEnter: () => {
-            if (cultureSection){
-              cultureSection.style.opacity = 1;
-     
-            cultureSection.addEventListener('mouseleave', () => {
-    if(document)
-{
-              document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1)';}
-            });
+            cultureSection.style.opacity = 1;
+  
+            // Apply hover effects
             cultureSection.addEventListener('mouseenter', () => {
-    if(document)
-{
-              document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1.3)';}
+              cultureImg.style.transition = 'transform 1s';
+              cultureImg.style.transform = 'scale(1.3)';
             });
-          }
+            cultureSection.addEventListener('mouseleave', () => {
+              cultureImg.style.transition = 'transform 1s';
+              cultureImg.style.transform = 'scale(1)';
+            });
+  
+            // Apply GSAP animation
             gsap.from(cultureSection, {
               duration: 1.5,
               opacity: 0,
               y: 60,
               ease: 'power2.out',
             });
-          }
+          },
         });
-      }
-      else {
-        ScrollTrigger.create({
-          trigger: cultureSection,
-          start: 'top center',
-          once: true,
-          onEnter: () => {
-            if (cultureSection){
-              cultureSection.style.opacity = 1;
-     
-            cultureSection.addEventListener('mouseleave', () => {
-    if(document)
-{
-              document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1)';}
-            });
-            cultureSection.addEventListener('mouseenter', () => {
-    if(document)
-
-           {   document.getElementById(`cultureImg${index}`).style.transition = 'transform 1s';
-              document.getElementById(`cultureImg${index}`).style.transform = 'scale(1.3)';}
-            });
-          }
-            gsap.from(cultureSection, {
-              duration: 1.5,
-              y: 60,
-              opacity: 0,
-              ease: 'power2.out',
-            });
-          }
-        });
+      };
+  
+      // Loop through culture sections and apply animations
+      for (let index = 0; index < 5; index++) {
+        const cultureSection = document.getElementById(`culture${index}`);
+        const cultureImg = document.getElementById(`cultureImg${index}`);
+  
+        // Apply ScrollTrigger to each section
+        applyScrollTrigger(index, cultureSection, cultureImg);
       }
     }
-
-    if (load != true) {
-      if (window.innerWidth < 1200) {
+  
+    // Handle animations for images and text based on window size
+    if (load !== true && typeof window !== "undefined") {
+      const handleImageAnimation = () => {
         image.current.style.opacity = 1;
-        gsap.from(image.current, {
-          y: -90, duration: 10
-        });
-        gsap.from('.text', {
-          opacity: 0, y: 100, duration: 1
-        });
-      }
-      else {
-        image.current.style.opacity = 1;
-        gsap.from(image.current, {
-          x: -90, y: 30, duration: 10
-        });
-        gsap.from('.text', {
-          opacity: 0, x: 100, duration: 1
-        });
-      }
+        if (window.innerWidth < 1200) {
+          gsap.from(image.current, { y: -90, duration: 10 });
+          gsap.from('.text', { opacity: 0, y: 100, duration: 1 });
+        } else {
+          gsap.from(image.current, { x: -90, y: 30, duration: 10 });
+          gsap.from('.text', { opacity: 0, x: 100, duration: 1 });
+        }
+      };
+  
+      handleImageAnimation();
     }
-    if(window)
-    window.scrollTo(0, 0);
+  
+    // Scroll to top of the page
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
   });
-
+  
   useEffect(() => {
-    console.log('count', count)
+    console.log('count', count);
     animation(Loading);
   }, [count, Loading]);
+  
 
   return (
     <div className='min-h-screen min-w-screen'>
@@ -172,19 +147,17 @@ const States = () => {
             </div>
           </div>
           <h1 className='amsterdam bg-origin-border pt-10 text-[#ffd867] mt-50 text-center w-full text-[4rem] mx-auto mt'>
-               Places to visit
-              </h1>
+            Places to visit
+          </h1>
           <SliderComponent />
           <h1 className='amsterdam bg-origin-border py-4 text-[#ffd867] mt-50 text-center w-full text-[4rem] mx-auto mt'>
-               Culture
-              </h1>
+            Culture
+          </h1>
           <div className='flex justify-around my-10 flex-wrap'>
             {filejson?.states[count].culture.map((each, index) => (
               <div id={`culture${index}`} key={each.cultureName} className='flex opacity-0 culture border-[2px] border-[#640303] rounded-sm shrink-0 justify-between w-[90vw] md:w-[45vw] m-4 bg-[#1e0700] '>
-                {/* <img src={each.cultureImg} alt="" /> */}
                 <div className='overflow-hidden flex items-center justify-center w-[126vw]'>
-
-                <Image src={each.cultureImg} id={`cultureImg${index}`}  alt={each.cultureName} width={1000} height={100} className="object-cover float-left px-4 h-[18vh] md:h-[35vh] lg:h-[sdf]  w-fit max-w-[25vw]" />
+                  <Image src={each.cultureImg} id={`cultureImg${index}`} alt={each.cultureName} width={1000} height={100} className="object-cover float-left px-4 h-[18vh] md:h-[35vh] lg:h-[sdf]  w-fit max-w-[25vw]" />
                 </div>
                 <div className='flex flex-col justify-center px-[1rem] my-6'>
                   <h2 className='text-2xl h-fit text-center font-bold text-[orange]'>{each.cultureName}</h2>
@@ -192,7 +165,6 @@ const States = () => {
                 </div>
               </div>
             ))}
-
           </div>
         </div>
       )}

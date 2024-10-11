@@ -2,16 +2,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LOGO from "../../public/images/LOGO.svg";
-import { gsap } from 'gsap';
 import Select from "react-dropdown-select";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import Link from 'next/link';
 import { useDispatch } from 'react-redux'
-// import jsonfile from "../../public/json.json";
-import Loader from './Loader';
 import { setCount } from '../redux/counter/counterSlice';
-import { color } from 'framer-motion';
 import { fireDB } from '../firebase/firebaseConfig'
 import { collection, getDocs } from 'firebase/firestore'
 
@@ -26,76 +22,79 @@ export default function Navbar() {
   const { contextSafe } = useGSAP();
 
   const [fetchData, setFetchData] = useState(true)
-  const animation = contextSafe(() => {});
+  const animation = contextSafe(() => { });
 
   const [filejson, setfilejson] = useState({})
   const dataFetch = async () => {
     let x = await getDocs(collection(fireDB, 'jsonData'));
     setfilejson(x.docs[1].data())
     setFetchData(false)
-    // setfilejson(jsonfile)
-    // setFetchData(false);
   }
   useEffect(() => { dataFetch() }, [])
 
   useEffect(() => {
     const googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
-      { pageLanguage: 'en' },
-      'google_translate_element'
+        { pageLanguage: 'en' },
+        'google_translate_element'
       );
       if (window.screen.width < 768 && document) {
-      document.querySelector('nav').style.transform = 'translateY(-100%)';
+        document.querySelector('nav').style.transform = 'translateY(-100%)';
       }
 
       const handleScroll = () => {
-        if(document){
-      var nav = document.querySelector('nav');}
-      if (window.scrollY > window.innerHeight / 0.5) {
-        nav.style.transition = 'transform 0.6s ease-in-out';
-        nav.style.transform = 'translateY(-30vh)';
-      } else {
-        nav.style.transition = 'transform 0.6s ease-in-out';
-        nav.style.transform = 'translateY(0)';
-      }
+        if (typeof document !== "undefined") {
+          var nav = document.querySelector('nav');
+        }
+        if (typeof window !== "undefined") {
+          if (window.scrollY > window.innerHeight / 0.5) {
+            nav.style.transition = 'transform 0.6s ease-in-out';
+            nav.style.transform = 'translateY(-30vh)';
+          } else {
+            nav.style.transition = 'transform 0.6s ease-in-out';
+            nav.style.transform = 'translateY(0)';
+          }
+        }
+
       };
-      if(document)
-      document.querySelectorAll('.scrl').forEach(element => {
-        element.addEventListener('click', () => {
-          if(window){
-          window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-          });}
+      if (typeof document !== "undefined")
+        document.querySelectorAll('.scrl').forEach(element => {
+          element.addEventListener('click', () => {
+            if (typeof window !== "undefined") {
+              window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+              });
+            }
+          });
         });
-      });
-      if(window)
-      window.addEventListener('scroll', handleScroll);
+      if (typeof window !== "undefined")
+        window.addEventListener('scroll', handleScroll);
 
       return () => {
-        if(window)
-      window.removeEventListener('scroll', handleScroll);
+        if (typeof window !== "undefined")
+          window.removeEventListener('scroll', handleScroll);
       };
     };
 
     animation();
 
-    if(document)
-    document.querySelectorAll('li').forEach(element => {
-      element.style.opacity = 1;
-    });
+    if (typeof document !== "undefined")
+      document.querySelectorAll('li').forEach(element => {
+        element.style.opacity = 1;
+      });
 
     const addGoogleTranslateScript = () => {
-      if(document)
-      var script = document.createElement('script');
+      if (typeof document !== "undefined")
+        var script = document.createElement('script');
       script.type = 'text/javascript';
       script.src =
         'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       script.async = true;
-      if(document)
-      document.body.appendChild(script);
-      if(window)
-      window.googleTranslateElementInit = googleTranslateElementInit;
+      if (typeof document !== "undefined")
+        document.body.appendChild(script);
+      if (typeof window !== "undefined")
+        window.googleTranslateElementInit = googleTranslateElementInit;
     };
 
     addGoogleTranslateScript();
@@ -103,23 +102,6 @@ export default function Navbar() {
   }, []);
 
   const options = filejson?.states?.map((each, index) => { return { id: index, name: each.state } })
-  console.log('options', options)
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isFocused ? '#f0f0f0' : '#fff',
-      color: state.isSelected ? '#ffffff' : '#000000',
-      cursor: 'pointer',
-    }),
-    control: (provided) => ({
-      ...provided,
-      width: 200,
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      color: '#000000',
-    }),
-  };
 
   return (
     <>
@@ -127,7 +109,7 @@ export default function Navbar() {
         <div className='flex items-center w-full justify-between  lg:w-auto'>
           <Image src={LOGO} width={90} alt="Logo" />
           <button className='lg:hidden  px-5 text-white' onClick={() => setLoading(!Loading)}>
-            <svg className="w-6 cursor-pointer h-6" fill="none" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 cursor-pointer h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
           </button>

@@ -4,9 +4,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Background from "../../public/images/homeImg.jpg"
 import { useDispatch } from 'react-redux'
-import Rough from './Rough'
+
 import Loader from './Loader'
-// import filejson from '../../public/json.json'
 import { fireDB } from '../firebase/firebaseConfig'
 import { gsap } from 'gsap';
 import Link from 'next/link'
@@ -29,59 +28,63 @@ const Home = () => {
   }
   const { contextSafe } = useGSAP();
   const animation = contextSafe(() => {
-    if(window.innerWidth < 768){
+    if(typeof window !== "undefined"){
+      if (window.innerWidth < 768) {
         gsap.to(image.current, {
-           scale:1.3, duration: 5
+          scale: 1.3, duration: 5
         });
       }
-      else{
+
+      else {
         gsap.to(image.current, {
-          y: -90,scale:1.1, duration: 5
+          y: -90, scale: 1.1, duration: 5
         });
       }
-        for (let index = 0; index < 9; index++) {
-            let scalediv = `#scale${index}`;
-            let x = scalediv + " .textdiv";
-            ScrollTrigger.create({
-            trigger: scalediv,
-            start: 'top center',
-            end: 'top 20%',
-            yoyo: true,
-            scrub: true,
-            onLeaveBack: () => {
-              gsap.to(scalediv, {
-              scale: 1,
-              ease: 'power2.out',
-              });
-            },
-            onEnter: () => {
-              gsap.to(scalediv, {
-              scale: 1.2,
-              ease: 'power2.out',
-              });
-            },
-            onEnterBack: () => {
-              gsap.to(scalediv, {
-              scale: 1.2,
-              ease: 'power2.out',
-              });
-            },
-            onLeave: () => {
-              gsap.to(scalediv, {
-              scale: 1,
-              ease: 'power2.out',
-              });
-            }
-            });
+    }
+    for (let index = 0; index < 9; index++) {
+
+      let scalediv = `#scale${index}`;
+      let x = scalediv + " .textdiv";
+      ScrollTrigger.create({
+        trigger: scalediv,
+        start: 'top center',
+        end: 'top 20%',
+        yoyo: true,
+        scrub: true,
+        onLeaveBack: () => {
+          gsap.to(scalediv, {
+            scale: 1,
+            ease: 'power2.out',
+          });
+        },
+        onEnter: () => {
+          gsap.to(scalediv, {
+            scale: 1.2,
+            ease: 'power2.out',
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(scalediv, {
+            scale: 1.2,
+            ease: 'power2.out',
+          });
+        },
+        onLeave: () => {
+          gsap.to(scalediv, {
+            scale: 1,
+            ease: 'power2.out',
+          });
         }
+      });
+    }
   });
-  
+
   useEffect(() => {
-    
+
     if (!fetchData) {
       animation();
     }
-    
+
   }, [fetchData]);
   useEffect(() => { dataFetch() }, [])
   const dispatch = useDispatch()
@@ -93,11 +96,11 @@ const Home = () => {
         < Loader />
       </div >}
         <div ref={image} className=' h-[calc(100%-4rem)] overflow-hidden flex items-center'>
-          <Image src={Background} width={"100%"} height={"80vh"} />
+          <Image src={Background } alt='bg' width={"100%"} height={"80vh"} />
         </div>
         <h1 className='amsterdam bg-origin-border py-4 text-[#ffd867] mt-50 text-center w-full text-[6rem] mx-auto mt'>
-               STATES
-              </h1>
+          STATES
+        </h1>
         <div className='flex flex-col justify-center items-center'>
           {filejson.states?.map((item, index) => (
             <Link href="/States" key={index} onClick={() => setLoading(e => !e)} >
@@ -115,7 +118,7 @@ const Home = () => {
               </div>
             </Link>
           ))}
-{/* <Rough/> */}
+
         </div>
       </>
     }</div>

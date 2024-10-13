@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className='min-h-[20rem]  bg-[#351a03]  flex-col lg:flex-row text-black p-5 flex items-center'>
       <div className="left flex flex-col items-center py-9 max-w-[21rem] px-5  bg-black rounded-md mx-7  ">
-        <Image src={Icon} width={250}></Image>
+        <Image src={Icon} alt='icon' width={250}></Image>
         {/* <span className=' text-gray-400 text-center font-bold w-3/4'>Thank you for visiting us!</span> */}
       </div>
       <div className=' w-full justify-around items-start hidden lg:flex'>

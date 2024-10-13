@@ -5,31 +5,27 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 import Loader from "./Loader";
 import { useSelector, useDispatch } from 'react-redux'
 import "react-slideshow-image/dist/styles.css";
-import { duration } from "@mui/material";
+
 import { fireDB } from '../firebase/firebaseConfig'
 import { collection, getDocs } from 'firebase/firestore'
-import FetchData from "./Rough";
+
 const SliderComponent = () => {
   const [filejson, setfilejson] = useState({})
   const [hover, setHover] = useState(false);
   const [map, setmap] = useState(false);
   const [FetchData, setFetchData] = useState(true)
-  // const map = useRef(null);
+
   const dataFetch = async () => {
     let x = await getDocs(collection(fireDB, 'jsonData'));
     setfilejson(x.docs[1].data())
     setFetchData(false)
-    // setfilejson(jsonfile)
-    // setFetchData(false);
+
   }
   useEffect(() => { dataFetch() }, [])
 
   const handleMapIconClick = () => {
     if (map.current) {
       map.current.style.display = map.current.style.display === "block" ? "none" : "block";
-      console.log('yes')
-      console.log('map.current.style.display', map.current.style.display)
-      console.log('map.current.style.display', map.current)
     }
   };
 
@@ -37,15 +33,11 @@ const SliderComponent = () => {
   const slide = useRef()
   const count = useSelector(state => state.counter.value)
 
-  // console.log('jsonfile.states.Karnataka.placesToVisit', jsonfile.states.Karnataka.placesToVisit);
-
   const zoomInProperties = {
     duration: hover ? 30000000 : 3043300,
     transitionDuration: 500, // Transition duration between slides in milliseconds
-    // infinite: true, // Loop the slides infinitely
     indicators: true, // Show slide indicators
     arrows: true, // Show arrows for navigation
-    // autoPlay: false, // Disable auto-play
     indicators: (index) => (
       <div
         key={index}

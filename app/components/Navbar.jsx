@@ -34,19 +34,20 @@ export default function Navbar() {
 
   useEffect(() => {
     const googleTranslateElementInit = () => {
+      if(typeof window !== "undefined" && typeof document !== "undefined"){
       new window.google.translate.TranslateElement(
         { pageLanguage: 'en' },
         'google_translate_element'
       );
-      if (window.screen.width < 768 && document) {
+      if (window.screen.width < 768 && typeof document !== "undefined") {
         document.querySelector('nav').style.transform = 'translateY(-100%)';
       }
-
+    }
       const handleScroll = () => {
         if (typeof document !== "undefined") {
           var nav = document.querySelector('nav');
         }
-        if (typeof window !== "undefined") {
+        if (typeof window !== "undefined" && nav) { 
           if (window.scrollY > window.innerHeight / 0.5) {
             nav.style.transition = 'transform 0.6s ease-in-out';
             nav.style.transform = 'translateY(-30vh)';
@@ -93,8 +94,8 @@ export default function Navbar() {
       script.async = true;
       if (typeof document !== "undefined")
         document.body.appendChild(script);
-      if (typeof window !== "undefined")
-        window.googleTranslateElementInit = googleTranslateElementInit;
+      if (typeof window !== "undefined"){
+        window.googleTranslateElementInit = googleTranslateElementInit;}
     };
 
     addGoogleTranslateScript();
@@ -138,9 +139,9 @@ export default function Navbar() {
               }}
               color='grey'
               onChange={(id) => {
+                setloading(true)
                 dispatch(setCount(id[0].id));
                 router.push('/States');
-                setloading(true)
               }}
             />
           </li>

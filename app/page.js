@@ -1,9 +1,17 @@
 "use client"
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
-import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './components/Home'
 
+// Import the dynamic function
+import dynamic from 'next/dynamic';
+
+// Dynamically import the component and disable SSR
+const Home = dynamic(() => import('./components/Home'), {
+  ssr: false, // Disable server-side rendering
+});
+const Navbar = dynamic(() => import('./components/Navbar'), {
+  ssr: false, // Disable server-side rendering
+});
 import store from './redux/store'
 import { Provider } from 'react-redux'
 function App() {

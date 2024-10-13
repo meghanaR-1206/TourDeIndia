@@ -196,7 +196,7 @@ position: relative;
 .bpHeaderContentActionsIcons{
   color: white !important;
   right: 5px;
-  top: 0.1rem;
+  top: -0.5rem;
   position: absolute;
   margin: 1rem;
 }
@@ -220,6 +220,7 @@ position: relative;
 }
 .bpContainer {
   position: fixed;
+  z-index: 100;
     bottom: 6rem;
     right: 0rem;
     width: 29rem;
@@ -232,6 +233,7 @@ position: relative;
   position: fixed;
     bottom: 1rem;
     right: 1rem;
+    z-index: 100;
 }
 .css-rh82gz-DropDown{
   width: 160px !important;

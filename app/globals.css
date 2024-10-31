@@ -235,6 +235,15 @@ position: relative;
     right: 1rem;
     z-index: 100;
 }
+.aiRes span {
+  font-weight: bold;
+  font-size: x-large;
+  color: #ffd867;
+}
+.aiRes{
+  font-size: large;
+
+}
 .css-rh82gz-DropDown{
   width: 160px !important;
 }

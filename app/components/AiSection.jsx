@@ -24,18 +24,24 @@ const AiSection = () => {
             messageBox.innerHTML = message.innerHTML
         }
 
-        gsap.from(".aisec", {
-            opacity: 0,
-            y: 100,
-            delay: 5
-        })
-        headding.style.opacity = 1;
 
+        headding.style.opacity = 1;
+        
         gsap.from(".animChar", {
             opacity: 0,
             duration: 0.1,
-            
             stagger: 0.1,
+            scrollTrigger: {
+              trigger: ".aisec",
+              start: "top 85%", 
+              onEnter: () => {
+                window.scrollTo({
+                    top: 770,
+                    behavior: 'smooth'
+                });
+              },
+            //   markers: true,                    // Smooth transition when `fixedDiv` unpins
+            }
         })
       
     })
@@ -43,7 +49,7 @@ const AiSection = () => {
         animation();
     }, [])
     return (
-        <div className='  aisec h-fit pb-[6rem] backdrop-blur-sm bg-[#00000033]'>
+        <div className='  aisec h-[110vh] py-[3rem] backdrop-blur-lg bg-[#00000033]'>
             <h1 id='textanim' className='amsterdam opacity-0 bg-origin-border py-4 text-[#ffd867] mt-50 text-center w-full text-[4rem] mx-auto mt'>
 
             </h1>

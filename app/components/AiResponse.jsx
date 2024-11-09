@@ -74,8 +74,8 @@ function ChatApp() {
                 />
                 <button onClick={handleSendMessage} className='text-yellow-400 cursor-pointer'><IoSend /></button>
             </div>
-            {loading && <div className='absolute ml-[70vw] mt-[7rem] '><Loader/></div>}
-            <div className='h-[60vh] my-6 overflow-y-scroll  w-[80vw] py-7 m-auto'>
+            {loading && <div className='absolute ml-[45vw] mt-[7rem] '><Loader/></div>}
+            <div className='h-[60vh] my-6 px-4 scrollBrown overflow-y-scroll  w-[80vw] py-7 m-auto'>
                 {response.map((item, index) => {
                     let formattedItem = item;
                     let isBold = true;

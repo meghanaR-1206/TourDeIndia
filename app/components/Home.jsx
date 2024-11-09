@@ -52,9 +52,9 @@ const Home = () => {
           trigger: image.current,
           start: "top 4rem",             // Start pinning when `fixedDiv` reaches the top of the viewport
           endTrigger: ".amsterdam",           // End pinning when `nextDiv` reaches the top of the viewport
-          end: "top 15%",                // Stop pinning at this scroll position
+          end: "top 9rem",                // Stop pinning at this scroll position
           pin: true,                     // Pin `fixedDiv` in place
-          markers: true,                 // Add markers to the page
+          // markers: true,                 // Add markers to the page
           pinSpacing: false,             // Prevent extra space below the pinned element
           // scrub: 1                       // Smooth transition when `fixedDiv` unpins
         }
@@ -85,7 +85,7 @@ const Home = () => {
         <h1 className='amsterdam bg-origin-border py-4 text-[#ffd867] mt-50 text-center w-full text-[6rem] mx-auto mt'>
           STATES
         </h1>
-        <StateSectoin data={filejson} setLoading={setLoading} />
+        <StateSectoin data={filejson} />
       </>
     }</div>
   )

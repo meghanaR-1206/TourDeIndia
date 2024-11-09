@@ -134,8 +134,8 @@ const State = () => {
       ) : (
         <div className='w-full h-fit'>
           <div className='h-fit lg:max-h-[95vh] min-w-[50vw] full items-start overflow-hidden w-full flex lg:flex-row flex-col'>
-            <div ref={image} className='w-fit opacity-0 relative image  h-fit flex items-center justify-center self-center overflow-hidden'>
-              {Loading && <div className="flex fixed bg-[#38sdf1a05ad] w-screen h-screen"><Loader /></div>}
+            <div ref={image} className='w-fit opacity-0 relative image stateBg h-fit flex items-center justify-center self-center overflow-hidden'>
+              {Loading && <div className="flex fixed bg-[#38sdf1a05ad]  w-screen h-screen"><Loader /></div>}
               <LazyLoadImage
                 effect="black-and-white"
                 wrapperProps={{

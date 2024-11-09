@@ -7,41 +7,54 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
 /* Target the translate dropdown container */
 #google_translate_element select {
-  background-color: #f0f0f0 !important; /* Change background color */
-  color: #333 !important;               /* Change text color */
-  border: 1px solid #ddd !important;    /* Add border */
-  padding: 5px !important;              /* Add padding */
-  font-size: 14px !important;           /* Change font size */
-  font-family: 'Arial', sans-serif !important; /* Change font family */
+  background-color: #f0f0f0 !important;
+  /* Change background color */
+  color: #333 !important;
+  /* Change text color */
+  border: 1px solid #ddd !important;
+  /* Add border */
+  padding: 5px !important;
+  /* Add padding */
+  font-size: 14px !important;
+  /* Change font size */
+  font-family: 'Arial', sans-serif !important;
+  /* Change font family */
 }
-*{
+
+* {
   cursor: default;
   /* font-size: medium; */
 }
-.goog-te-combo{
+
+.goog-te-combo {
   outline: 0;
 }
 
 /* Customize the Google Translate widget container */
 div#google_translate_element {
-  margin: 10px;                         /* Add margin */
+  margin: 10px;
+  /* Add margin */
 }
 
 /* Targeting the skiptranslate class to hide Google branding */
-body > .skiptranslate > iframe.skiptranslate {
-  display: none !important;             /* Hide the branding iframe */
+body>.skiptranslate>iframe.skiptranslate {
+  display: none !important;
+  /* Hide the branding iframe */
 }
 
-body > .skiptranslate {
-  display: none !important;             /* Hide the outer branding element */
+body>.skiptranslate {
+  display: none !important;
+  /* Hide the outer branding element */
 }
 
 .indicator {
   width: 10px;
   height: 10px;
-  background-color: #8e8e8e; /* Default color for inactive indicators */
+  background-color: #8e8e8e;
+  /* Default color for inactive indicators */
   border-radius: 50%;
   margin: 5px;
   display: inline-block;
@@ -49,23 +62,25 @@ body > .skiptranslate {
 }
 
 @keyframes appearz {
-  from{
+  from {
     opacity: 0;
     /* scale: 0.5; */
     transform: translate(100vw);
   }
-  to{
+
+  to {
     opacity: 1;
     transform: translate(0px);
     /* scale: 1; */
   }
-  
+
 }
 
 
 
 .indicator.active {
-  background-color: #ffffff; /* Active indicator color */
+  background-color: #ffffff;
+  /* Active indicator color */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,34 +94,39 @@ body > .skiptranslate {
 body {
   top: 0 !important;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
-.scrolling::-webkit-scrollbar{
+
+.scrolling::-webkit-scrollbar {
   height: 0;
 }
-.scrolling::-webkit-scrollbar-track{
+
+.scrolling::-webkit-scrollbar-track {
   background-color: rgb(19, 19, 19);
 }
-.scrolling::-webkit-scrollbar-thumb{
+
+.scrolling::-webkit-scrollbar-thumb {
   background-color: #252525;
 }
-.scroll::-webkit-scrollbar{
+
+.scroll::-webkit-scrollbar {
   height: 0;
 }
-.scroll::-webkit-scrollbar-track{
+
+.scroll::-webkit-scrollbar-track {
   background-color: #1e0700;
 }
-.scroll::-webkit-scrollbar-thumb{
+
+.scroll::-webkit-scrollbar-thumb {
   background-color: #311c0c;
 }
-.scroll::-webkit-scrollbar-thumb:hover{
+
+.scroll::-webkit-scrollbar-thumb:hover {
   background-color: #351a03;
 }
+
 /* .scrolling::-webkit-scrollbar-thumb:hover{
   background-color: #fcb900;
 } */
@@ -118,6 +138,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 /* *{
   overflow-x: hidden;
 } */
@@ -126,30 +147,37 @@ body {
 }
 
 /* background-color: #9f5415; */
-.bpMessageListContainer{
-background-color: #351a03;
+.bpMessageListContainer {
+  background-color: #351a03;
 }
+
 .bpFabContainer:hover {
   transform: scale(1.1);
   transition: transform 0.4s ease;
 }
+
 .bpFabIcon {
   background-color: #f3b901 !important;
 }
-.bpModalDialogNewConversationButton{
+
+.bpModalDialogNewConversationButton {
   background-color: #c05d08 !important;
 }
-.bpModalDialogNewConversationButton:hover{
+
+.bpModalDialogNewConversationButton:hover {
   background-color: #c05d08 !important;
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
-.bpMessageBlocksButton{
+
+.bpMessageBlocksButton {
   background-color: #c05d08 !important;
 }
-.bpMessageBlocksButton:hover{
-background-color: #c05d08 !important;
+
+.bpMessageBlocksButton:hover {
+  background-color: #c05d08 !important;
 }
+
 #curser {
   height: 90px;
   width: 90px;
@@ -169,45 +197,54 @@ background-color: #c05d08 !important;
 #image {
   width: 20rem;
   height: 20rem;
-position: relative;
+  position: relative;
 }
-#image img{
+
+#image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
+
 /* we are using overlay div to prevent the missleading of the mouse leaving event when the cursor points at cursor div */
-#overlay{
+#overlay {
   background: transparent;
   height: 100%;
   width: 100%;
   position: absolute;
   z-index: 90;
 }
-.bpHeaderContentTitle{
+
+.bpHeaderContentTitle {
   color: white !important;
 }
-.bpHeaderContentDescription{
+
+.bpHeaderContentDescription {
   color: white !important;
 }
-.bpHeaderContentActionsIcons:hover{
+
+.bpHeaderContentActionsIcons:hover {
   background-color: #351A03 !important;
 }
-.bpHeaderContentActionsIcons{
+
+.bpHeaderContentActionsIcons {
   color: white !important;
   right: 5px;
   top: -0.5rem;
   position: absolute;
   margin: 1rem;
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
 .bpMessageBlocksButton {
   color: white;
 }
+
 .bpMessageListMarqueeAvatarFallback {
   background-color: #f36e0a;
 }
@@ -215,50 +252,83 @@ position: relative;
 .bpHeaderContentAvatarFallback {
   background-color: #f36e0a;
 }
+
 .bpMessageAvatarFallback {
   background-color: #f36e0a;
 }
+
 .bpContainer {
   position: fixed;
   z-index: 100;
-    bottom: 6rem;
-    right: 0rem;
-    width: 29rem;
-    height: 35rem;
+  bottom: 6rem;
+  right: 0rem;
+  width: 29rem;
+  height: 35rem;
 }
+
 .bpHeaderContainer {
   background-color: #642e00;
 }
+
 .bpFabContainer {
   position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 100;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 100;
 }
+
 .aiRes span {
   font-weight: bold;
   font-size: x-large;
   color: #ffd867;
 }
-.aiRes{
+
+.stateBg img {
+  min-height: 100vh;
+}
+
+.aiRes {
   font-size: large;
 
 }
-.css-rh82gz-DropDown{
+
+.css-rh82gz-DropDown {
   width: 160px !important;
 }
-.inter{
+
+.inter {
   font-family: "Inter", sans-serif;
 }
-.amsterdam{
+
+.amsterdam {
   font-family: "New Amsterdam", sans-serif;
 }
+
 .bpMessageContainer[data-direction=outgoing] .bpMessageBlocksBubble {
   background-color: #f3b70a !important;
   color: #ffffff !important;
 }
+
 .bpMessageContainer[data-direction=incoming] .bpMessageBlocksBubble {
   border-color: var(--bpGray-200);
   background-color: #642e00 !important;
   color: #ffffff !important;
+}
+
+.scrollBrown::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollBrown::-webkit-scrollbar-track {
+  background-color: rgba(165, 42, 42, 0);
+}
+
+.scrollBrown::-webkit-scrollbar-thumb {
+  background-color: #8b4513;
+  /* SaddleBrown color */
+}
+
+.scrollBrown::-webkit-scrollbar-thumb:hover {
+  background-color: #a0522d;
+  /* Sienna color */
 }

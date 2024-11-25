@@ -29,12 +29,17 @@ const Stars = (props) => {
 
 const StarsCanvas = () => {
     return (
-        <div className='w-full z-[-11] h-auto absolute inset-0'>
-            <Canvas camera={{ position: [0, 0, 1] }}>
+        <div className='w-full h-full absolute inset-0 z-[-1]'>
+            <Canvas 
+                camera={{ position: [0, 0, 1] }} 
+                style={{
+                    width: '100%', // Full width of the container
+                    height: '100vh', // Full height of the viewport
+                }}
+            >
                 <Suspense fallback={null}>
                     <Stars />
                 </Suspense>
-
                 <Preload all />
             </Canvas>
         </div>
@@ -42,3 +47,4 @@ const StarsCanvas = () => {
 };
 
 export default StarsCanvas;
+
